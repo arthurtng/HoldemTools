@@ -3,6 +3,7 @@
 class Program
 {
     private static BoardAnalyzer _boardAnalyzer;
+    private static ImpliedOddsCalculator _impliedOddsCalculator;
     
     static void Main(string[] args)
     {
@@ -18,6 +19,11 @@ class Program
         {
             _boardAnalyzer = new BoardAnalyzer();
             _boardAnalyzer.Run();
+        }
+        else if (args[0] == "--implied-odds")
+        {
+            _impliedOddsCalculator = new ImpliedOddsCalculator();
+            _impliedOddsCalculator.Run();
         }
         else
         {
