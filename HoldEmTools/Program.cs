@@ -4,11 +4,14 @@ class Program
 {
     private static BoardAnalyzer _boardAnalyzer;
     private static ImpliedOddsCalculator _impliedOddsCalculator;
+    private static EvCalculator _evCalculator;
     
+
     static void Main(string[] args)
     {
-        string[] options = { "--board-analyzer", "--implied-odds", "--hand-analyzer" };
-        
+        string[] options = 
+            { "--board-analyzer", "--implied-odds", "--hand-analyzer", "--pot-odds", "--ev-calculator" };
+
         if (args.Length != 1 || !options.Contains(args[0]))
         {
             PrintUsage();
@@ -24,6 +27,11 @@ class Program
         {
             _impliedOddsCalculator = new ImpliedOddsCalculator();
             _impliedOddsCalculator.Run();
+        }
+        else if (args[0] == "--ev-calculator")
+        {
+            _evCalculator = new EvCalculator();
+            _evCalculator.Run();
         }
         else
         {
@@ -41,6 +49,7 @@ class Program
         Console.WriteLine("  --board-analyzer   Analyze a board texture");
         Console.WriteLine("  --implied-odds     Calculate implied odds");
         Console.WriteLine("  --hand-analyzer    Analyze odds of making various hands");
+        Console.WriteLine("  --pot-odds         Calculate pot odds");
     }
 
 }
